@@ -1,0 +1,7 @@
+Training Loop:
+  1. use Adam optimizers
+  2. Train for 100 epochs
+  3. Learning Rate of Generator 0.0001
+  4. Learning Rate of Discriminator 0.0004
+  5. Loss tradeoff set to 0.1 during training
+  
