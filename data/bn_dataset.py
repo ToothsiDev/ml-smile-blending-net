@@ -5,9 +5,9 @@ from PIL import Image
 
 class BNDataset(BaseDataset):
     """
-    Dataset for mouth blendingnet
+    Dataset for mouth bn
     pass args:
-        --dataset_mode blendingnet
+        --dataset_mode bn
     """
     def __init__(self, opt):
         """Initialize this dataset class.

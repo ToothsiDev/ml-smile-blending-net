@@ -3,8 +3,8 @@ from .base_model import BaseModel
 from . import networks
 
 
-class BlendingnetModel(BaseModel):
-    """This class implements the blendingnet model, for learning a mapping from input images to output images given paired data.
+class BNModel(BaseModel):
+    """This class implements the bn model, for learning a mapping from input images to output images given paired data.
 
     The model training requires '--dataset_mode aligned' dataset.
     By default, it uses a '--netG unet256' U-Net generator,
@@ -24,12 +24,12 @@ class BlendingnetModel(BaseModel):
         Returns:
             the modified parser.
 
-        For blendingnet, we do not use image buffer
+        For bn, we do not use image buffer
         The training objective is: GAN Loss + lambda_L1 * ||G(A)-B||_1
         By default, we use vanilla GAN loss, UNet with batchnorm, and aligned datasets.
         """
-        # changing the default values to match the blendingnet paper 
-        parser.set_defaults(norm="batch", netG="unet_256", dataset_mode="blendingnet", input_nc=7, direction="AtoB")
+        # changing the default values to match the bn paper 
+        parser.set_defaults(norm="batch", netG="unet_256", dataset_mode="bn", input_nc=3, direction="BtoA")
         if is_train:
             parser.set_defaults(pool_size=0, gan_mode="vanilla")
             parser.add_argument(
@@ -45,7 +45,7 @@ class BlendingnetModel(BaseModel):
         return parser
 
     def __init__(self, opt):
-        """Initialize the blendingnet class.
+        """Initialize the bn class.
 
         Parameters:
             opt (Option class)-- stores all the experiment flags; needs to be a subclass of BaseOptions
